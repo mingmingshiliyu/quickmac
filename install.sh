@@ -32,14 +32,14 @@ os_version=$(sw_vers -productVersion)
 if [[ $os_version < "10.15" ]]; then
   export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  source ~/.bash_profile
 elif [[ $os_version >= "10.15" ]]; then
   export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  source ~/.zshrc
 fi
-source ~/.bash_profile
-source ~/.zshrc
 nvm ls-remote
-echo "请输入Identifier下的版本"
+echo "请输入node的版本"
 read version
 nvm install $version
 nvm use $version
